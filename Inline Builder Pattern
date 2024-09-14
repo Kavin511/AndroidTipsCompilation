@@ -1,0 +1,17 @@
+
+@MainThread
+inline fun createMaterialDialog(
+ context: Context, 
+ block: MaterialDialog.Builder.() -> Unit
+) = MaterialDialog.Builder(context).apply(block).build()
+
+💡 **How does it work?**
+The `block` parameter is a lambda with receiver (`MaterialDialog.Builder.() -> Unit`), which allows you to directly configure the dialog builder within the lambda. The `apply` function sets up the dialog and calls `build()` at the end.
+
+Example:
+createMaterialDialog(context) {
+            title("Welcome")
+            content("This is a simplified builder pattern in Kotlin!")
+            positiveText("OK")
+            negativeText("Cancel")
+        }.show()
